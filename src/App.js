@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import './style.css';
+import './enter';
 
 const Container = styled.div`
   width: 60%;
@@ -10,6 +11,13 @@ const Container = styled.div`
   color: #fff;
   padding: 50px;
   min-height: 30vh;
+
+  @media only screen and (max-width: 600px){
+    padding: 50px 20px;
+    width: 80%;
+    min-height: 50vh;
+  }
+
 `;
 
 const Input = styled.input`
@@ -26,8 +34,16 @@ const Input = styled.input`
   &:active,
   &:focus {
     text-align: left;
-    border: solid 2px #851E3E;
-    box-shadow: none;
+    border: solid 2px #851E3E !important;
+    box-shadow: none !important;
+  }
+
+  @media only screen and (max-width: 600px){
+    width: 35%;
+    margin-top: 10%;
+    height: 40px;
+    border-radius: 8px;
+    margin-left: 0;
   }
 `;
 
@@ -45,6 +61,16 @@ const Button = styled.button`
   margin-left: 7%;
   font-family: 'Caveat';
   text-transform: uppercase;
+
+  @media only screen and (max-width: 600px){
+    margin-top: 11%;
+    padding: 0px 10px;
+    margin-left: 5%;
+    height: 35px;
+    width: 90px;
+    /* background-color: rgb(171, 255, 79);
+    color: #fff; */
+  }
 `;
 
 const Title = styled.p`
@@ -53,6 +79,10 @@ const Title = styled.p`
   text-align: center;
   margin-top: 8%;
   text-transform: uppercase;
+
+  @media only screen and (max-width: 600px){
+    margin-top: 20%;
+  }
 `;
 
 const SubTitle = styled.p`
@@ -63,11 +93,20 @@ const SubTitle = styled.p`
   text-transform: uppercase;
   width: 70%;
   margin: 2% auto;
+
+  @media only screen and (max-width: 600px){
+    margin: auto;
+    width: 100%;
+  }
 `;
 
 const FlexBox = styled.div`
   display: flex;
   justify-content: center;
+
+  @media only screen and (max-width: 600px){
+    justify-content: flex-start;
+  }
 `;
 
 const ListItem = styled.li`
@@ -149,6 +188,13 @@ class App extends Component {
     })
   }
   
+  // Click(event){
+  //   if(event.KeyCode === 13){
+  //     console.log('clicked');
+  //   }
+    
+  // }
+  
   render() {
     return (
       <div className = "App">
@@ -158,8 +204,8 @@ class App extends Component {
           
           <SubTitle>Add an item</SubTitle>
 
-          <FlexBox>
-            <Input tye="text" placeholder="type an item here" value={this.state.newItem} onChange={e => this.updateInput("newItem", e.target.value)}></Input>
+          <FlexBox onClick={() => this.Click()}>
+            <Input tye="text" placeholder="Type an item" value={this.state.newItem} onChange={e => this.updateInput("newItem", e.target.value)}></Input>
             <Button onClick={() => this.addItem()}>Add +</Button>
           </FlexBox>
           
